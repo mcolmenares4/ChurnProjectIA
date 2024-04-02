@@ -85,7 +85,7 @@ def main ():
   col1.metric(label="Probalidad de NO :", value="{0:.2%}".format(probabilidad[0][0]),delta=" ")
   col2.metric(label="Probalidad de SI:", value="{0:.2%}".format(probabilidad[0][1]),delta=" ")
 
-#Cargar modelos
+#Cargar el modelo
 def load_models():
   modeloNB=jb.load('modeloNB.bin')
   return modeloNB
