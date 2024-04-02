@@ -5,8 +5,8 @@ import joblib as jb
 
 #Crear el main
 def main ():
-  st.set_page_config(
-  page_title="Predicción de deserción de clientes")
+      
+  st.set_page_config(page_title="Predicción de deserción de clientes")
   
   st.title("Aplicación de predicción usando Naive Bayes")
   
@@ -54,20 +54,22 @@ def main ():
     
     return modeloS,COMPS, PROMS, COMINTS ,COMPPRESS, RATES, DIASSINQS,TASARETS, NUMQS, RETRES
   
+  modelo,COMP, PROM, COMINT ,COMPPRES, RATE, DIASSINQ,TASARET, NUMQ, RETRE=seleccionar(modeloA)
+  
   #Presentar resultados
   with st.container(border=True):
     st.title("Predicción de Churn")
     st.write(""" Pronóstico cortesía del modelo:""")
-    st.write(modelo)
+    st.write("Naive Bayes")
     st.write("Se han seleccionado los siguientes parámetros:")
 
     lista=[[COMP, PROM, COMINT ,COMPPRES, RATE, DIASSINQ,TASARET, NUMQ, RETRE]]
     X_predecir=pd.DataFrame(lista,columns=['COMP', 'PROM', 'COMINT', 'COMPPRES', 'RATE', 'DIASSINQ','TASARET', 'NUMQ', 'RETRE'])
     st.dataframe(X_predecir)
   
-  modelo,COMP, PROM, COMINT ,COMPPRES, RATE, DIASSINQ,TASARET, NUMQ, RETRE=seleccionar(modeloA)
   
-  #Definir las predicciones
+  
+  #Definir la predicción
   if modelo=='Naive Bayes':
     y_predict=modeloNB.predict(X_predecir)
     probabilidad=modeloNB.predict_proba(X_predecir)
